@@ -1264,6 +1264,12 @@ def EDI_Eligibility_Section_save(request):
 def fishieriespage(request):
     return render(request,"fisheries.html",reguler_datas(freguler_datas(reguler_datas())))
 
+def ivppage(request):
+    return render(request,"ivp.html",reguler_datas(freguler_datas(reguler_datas())))
+
+def asiimpage(request):
+    return render(request,"asiim.html",reguler_datas(freguler_datas(reguler_datas())))
+
 def update_fishieries(request):
     return render(request,"home/fishieries.html",reguler_datas(freguler_datas(reguler_datas())))
 

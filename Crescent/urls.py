@@ -199,6 +199,8 @@ urlpatterns = [
     path("EDI_Eligibility_Section_save",views.EDI_Eligibility_Section_save),
 
     path('fishieriespage',views.fishieriespage),
+    path('ivp',views.ivppage),
+    path('asiim',views.asiimpage),
     path('fishieries',views.update_fishieries),
     path('upload_fishieries',views.upload_fishieries),
     path('delete_fishieries',views.delete_fishieries),

@@ -494,6 +494,31 @@ class fishieries(models.Model):
     class Meta:
           get_latest_by = ['image']
 
+class ASIIM(models.Model):
+    L_id = models.IntegerField(primary_key=True)
+    Reson = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='logo',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now)
+    class Meta:
+          get_latest_by = ['image']
+
+class IVP(models.Model):
+    L_id = models.IntegerField(primary_key=True)
+    Reson = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='logo',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now)
+    class Meta:
+          get_latest_by = ['image']
+
+class StartupTN(models.Model):
+    L_id = models.IntegerField(primary_key=True)
+    Reson = models.CharField(max_length = 200)
+    image = models.ImageField(upload_to='logo',default='images/user_image.png')
+    last_updated_date = models.DateField(default=timezone.now)
+    class Meta:
+          get_latest_by = ['image']
+
+
 class ContactEditPage(models.Model):
     id = models.IntegerField(primary_key=True)
     TextonImage = models.CharField(max_length = 200)
