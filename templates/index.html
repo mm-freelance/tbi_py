@@ -18,9 +18,15 @@
   <link rel="stylesheet" href="{% static 'assets/css/plugins.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/style.css' %}" />
   <link href="{% static 'https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css' %}" rel="stylesheet">
+ <link href="{% static 'https://unpkg.com/font-awesome@^4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <style>
+
     .swiper-button {
       visibility: hidden;
+    }
+    .bg-new{
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.8295693277310925) 36%, rgba(255,255,255,0) 100%);
     }
 
     #feedback {
@@ -52,7 +58,55 @@
       padding-left: 20px;
       padding-right: 20px;
       max-width: 100%;
+      display: flex;
+      justify-content: center;
     }
+
+    .flex-container {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 12px;
+      grid-row-gap: 0px;
+      
+}
+.flex-items{
+  transition: all .2s ease-in;
+  transform: scale(1);
+  cursor: pointer;
+}
+.flex-items:hover{
+  transition: all 200ms ease-in;
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.flex-items:nth-child(1) {
+  grid-area: 1 / 1 / 2 / 2;
+  
+}
+
+.flex-items:nth-child(2) {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.flex-items:nth-child(3) {
+  grid-area: 1 / 3 / 2 / 4;
+}
+
+.flex-items:nth-child(4) {
+  display: block;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: auto;
+  align-self: auto;
+  order: 0;
+  width: 70%;
+  height: 25vh;
+}
+
+
   </style>
 </head>
 
@@ -65,7 +119,6 @@
     <img class="banner_img" src="{% static 'assets\img\brands\banner_img.png'  %}" alt="Italian Trulli">
   </div>
   <div class="content-wrapper">
-
     <header class="wrapper bg-soft-primary">
       <nav class="navbar navbar-expand-lg center-nav transparent position-absolute navbar-dark caret-none"
         style="height:75px;">
@@ -319,14 +372,7 @@
                             </ul>
                           </div>
                         </div>
-                        <!--/column -->
-                      <!-- </div>
-                      <!--/.row -->
-                    <!-- </li>
-                    <!--/.mega-menu-content-->
-                  <!-- </ul>
-                  <!--/.dropdown-menu -->
-                <!-- </li> 
+                      
               </ul> -->
               <!-- /.navbar-nav -->
               <div class="offcanvas-footer d-lg-none">
@@ -401,7 +447,6 @@
             <nav class="nav social social-white">
               <a href="{{ SocialMediaLinks.0.Twitter }}"><iconify-icon icon="ri:twitter-line"></iconify-icon></a>
               <a href="{{ SocialMediaLinks.0.Facebook }}"><iconify-icon icon="uil:facebook"></iconify-icon></a>
-
               <a href="{{ SocialMediaLinks.0.Instagram }}"><iconify-icon icon="ph:instagram-logo"></iconify-icon></a>
               <a href="{{ SocialMediaLinks.0.LinkedIn }}"><iconify-icon icon="circum:linkedin"></iconify-icon></a>
             </nav>
@@ -425,14 +470,14 @@
       <!-- /.offcanvas -->
     </header>
     <!-- /header -->
-    <section class="wrapper bg-dark">
+    <section class="wrapper bg-new " data-aos="fade-up">
       <div class="swiper-container swiper-hero dots-over persephone" data-margin=" 0" data-autoplay="true"
         data-autoplaytime="7000" data-nav="true" data-dots="true" data-items="1">
         <div class="swiper">
-          <div class="swiper-wrapper">
+          <div class="swiper-wrapper ">
             {% for i in Uploadimage %}
-            <div class="swiper-slide bg-overlay bg-overlay-400 bg-dark bg-image" data-image-src="{{ i.image.url }}">
-              <div class="container h-100">
+            <div class="swiper-slide bg-overlay bg-overlay-400 bg-new bg-image" data-image-src="{{ i.image.url }}">
+              <div class="container h-100 ">
                 <div class="row h-100">
                   <div
                     class="col-md-10 offset-md-1 col-lg-7 offset-lg-0 col-xl-6 col-xxl-5 text-center text-lg-start justify-content-center align-self-center align-items-start">
@@ -440,28 +485,20 @@
                       class="display-1 fs-56 mb-4 text-white animate__animated animate__slideInDown animate__delay-1s">
                       {{ i.Title }}
                     </h2>
-                    <p class="lead fs-23 lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ i.content }}</p>
-                  </div>
-                  <!--/column -->
-                </div>
-                <!-- /.row -->
-              </div>
-              <!-- /.container -->
+                    <p class="lead   lh-sm mb-7 text-white animate__animated animate__slideInRight animate__delay-2s">{{ i.content }}</p>
+                  </div>               
+                </div>              
+              </div>              
             </div>
-            <!-- /.swiper-slide -->
-            <!-- /.swiper-slide -->
-            {% endfor %}
-            <!-- /.swiper-slide -->
-          </div>
-          <!-- /.swiper-wrapper -->
-        </div>
-        <!-- /.swiper -->
-      </div>
-      <!-- /.swiper-container -->
+            {% endfor %}      
+          </div>    
+        </div>  
+      </div>  
     </section>
-    <section class="wrapper bg-light angled lower-end">
-      <div class="container py-14 py-md-16">
-        <div class="row gx-lg-8 gx-xl-12 gy-10 mb-14 mb-md-17 align-items-center">
+
+    <section class="wrapper bg-light angled " data-aos="zoom-in-up">
+      <div class="container  py-md-16">
+        <div class="row align-items-center">
           <div class="col-lg-6 position-relative order-lg-2">
             <div class="shape bg-dot primary rellax w-16 h-20" data-rellax-speed="1" style="top: 3rem; left: 5.5rem">
             </div>
@@ -478,82 +515,76 @@
             </div>
           </div>
           <!--/column -->
-          <div class="col-lg-6">
+          <div class="col-lg-6 flex flex-row" >
             <img src="{% static 'assets/img/icons/lineal/megaphone.svg' %}"
               class="svg-inject icon-svg icon-svg-md mb-4" alt="" />
             <h2 class="display-4 mb-3">Who Are We?</h2>
             <p class="lead fs-lg">{{ whoweare.0.SubHeading }}</p>
-            <div class="row gy-3 gx-xl-8">
-              <div class="col-xl-6">
-                <ul class="icon-list bullet-bg bullet-soft-primary mb-0">
-                  <li><span><iconify-icon icon="mdi:menu-right-outline" width="20"
-                        height="20"></iconify-icon></span><span>{{ whoweare.0.Point1 }}</span></li>
-                  <li class="mt-3"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
-                        height="20"></iconify-icon></span><span>{{ whoweare.0.Point2 }}</span></li>
-                </ul>
-              </div>
-              <!--/column -->
-              <div class="col-xl-6">
-                <ul class="icon-list bullet-bg bullet-soft-primary mb-0">
-                  <li><span><iconify-icon icon="mdi:menu-right-outline" width="20"
-                        height="20"></iconify-icon></span><span>{{ whoweare.0.Point3 }}</span></li>
-                  <li class="mt-3"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
-                        height="20"></iconify-icon></span><span>{{ whoweare.0.Point4 }}</span></li>
-                </ul>
-              </div>
-              <!--/column -->
-            </div>
-            <!--/.row -->
           </div>
-          <!--/column -->
+        
         </div>
+        <div class="flex-container" >
+            <div class="card flex-items" data-aos="flip-left" data-aos-offset="200">
+              <div class="card-body">
+                <p class="card-text"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
+                  height="20"></iconify-icon></span><span>{{ whoweare.0.Point1 }}</span></p>
+              </div>
+            </div>
+            <div class="card flex-items" data-aos="flip-right" data-aos-offset="300">
+              <div class="card-body">
+                <p class="card-text"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
+                  height="20"></iconify-icon></span><span>{{ whoweare.0.Point2 }}</span></p>
+              </div>
+            </div>
+            <div class="card flex-items" data-aos="flip-left" data-aos-offset="400">  
+              <div class="card-body">
+                <p class="card-text"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
+                  height="20"></iconify-icon></span><span>{{ whoweare.0.Point3 }}</span></p>
+              </div>
+            </div>
+            <!-- <div class="card flex-items">
+              <div class="card-body">
+                <p class="card-text"><span><iconify-icon icon="mdi:menu-right-outline" width="20"
+                  height="20"></iconify-icon></span><span>{{ whoweare.0.Point4 }}</span></p>
+              </div>
+            </div> -->
+        </div>
+        
         <!--/.row -->
     </section>
 
 
-
-    <section class="wrapper bg-soft-primary">
-      <div class="container pt-16 pb-14 pb-md-0">
-        <div class="row gx-lg-8 gx-xl-0 align-items-center">
-          <div class="col-md-5 col-lg-4 offset-lg-1 d-none d-md-flex position-relative">
-            <div class="shape rounded-circle bg-pale-primary rellax w-21 h-21" data-rellax-speed="1"
-              style="top: 2.5rem; left: 1rem"></div>
-            <figure style="width: 170px; top: 4.5rem; left: 3.3rem;"><img src="{{ ht.0.image.url }}"  srcset="./{% static 'assets/img/photos/co1@2x.png' %} 2x" alt="">
-            </figure>
+   
+    <section id="sectinippet-3" class="wrapper bg-light wrapper-border " data-aos="zoom-in-up">
+      <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
+        <h2 class="fs-15 text-uppercase text-muted mb-3">Our Government tie-ups</h2>
+        <div class="row gx-lg-8 mb-10 gy-5">
+          <div class="col-lg-6">
+            <h3 class="display-5 mb-0">
+              {{ govt.0.Title }}
+            </h3>
           </div>
-          <!--/column -->
-          <div class="col-md-7 col-lg-6 col-xl-6 col-xxl-5 offset-xl-1">
-            <div class="basic-slider owl-carousel dots-start gap-small mt-6" data-margin="30">
-              <div class="item">
-                <blockquote class="icon fs-lg">
-                  <p>{{ ht.0.Testimonial_content }}</p>
-                  <div class="blockquote-details">
-                    <div class="info ps-0">
-                      <h5 class="mb-1">{{ ht.0.Name }}</h5>
-                      <p class="mb-0">{{ ht.0.Designation }}</p>
-                    </div>
-                  </div>
-                </blockquote>
-              </div>
-              <!-- /.item -->
 
-              <!-- /.item -->
-
-              <!-- /.item -->
-            </div>
-            <!-- /.owl-carousel -->
-          </div>
-          <!--/column -->
         </div>
-        <!--/.row -->
-      </div>
-      <!-- /.container -->
+        <!-- /.row -->
+        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 gx-lg-6 gy-6 justify-content-center">
+          {% for i in govt %}
+          <div class="col hover">
+            <div class="card shadow-lg h-100 align-items-center">
+              <div class="card-body align-items-center d-flex px-3 py-6 p-md-8">
+                <figure class="px-md-3 px-xl-0 px-xxl-3 mb-0">
+                  <img src="{{ i.image.url }}" alt="" />
+                </figure>
+              </div>
+              <!--/.card-body -->
+            </div>
+            <!--/.card -->
+          </div>
+          {% endfor %}
     </section>
 
-    <!-- /section -->
-
-    <section id="snippet-2" class="wrapper bg-light wrapper-border">
-      <div class="container pt-15 mt-10 pt-md-7 pb-
+    <section id="snippet-2" class="wrapper bg-light wrapper-border" data-aos="flip-left">
+      <div class="container pt-10 mt-10 pt-md-7 pb-
       0 pb-md-9">
         <div class="row gx-lg-8 gx-xl-12 gy-10 gy-lg-0">
           <div class="col-lg-4 mt-lg-2">
@@ -579,35 +610,8 @@
 
       <!-- /.container -->
     </section>
-    <section id="sectinippet-3" class="wrapper bg-light wrapper-border">
-      <div class="container pt-15 pt-md-17 pb-13 pb-md-15">
-        <h2 class="fs-15 text-uppercase text-muted mb-3">Our Government tie-ups</h2>
-        <div class="row gx-lg-8 mb-10 gy-5">
-          <div class="col-lg-6">
-            <h3 class="display-5 mb-0">
-              {{ govt.0.Title }}
-            </h3>
-          </div>
 
-        </div>
-        <!-- /.row -->
-        <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 gx-lg-6 gy-6 justify-content-center">
-          {% for i in govt %}
-          <div class="col">
-            <div class="card shadow-lg h-100 align-items-center">
-              <div class="card-body align-items-center d-flex px-3 py-6 p-md-8">
-                <figure class="px-md-3 px-xl-0 px-xxl-3 mb-0">
-                  <img src="{{ i.image.url }}" alt="" />
-                </figure>
-              </div>
-              <!--/.card-body -->
-            </div>
-            <!--/.card -->
-          </div>
-          {% endfor %}
-    </section>
-
-    <section class="wrapper bg-light wrapper-border">
+    <section class="wrapper bg-light wrapper-border" data-aos="flip-left">
       <div class="container py-5 py-md-6">
         <h2 class=" display-4 text-uppercase text text-center mb-8">{{ ip.0.Title }}</h2>
         <div class="swiper-container clients mb-0" data-margin="30" data-dots="false" data-autoplay-timeout="3000"
@@ -629,7 +633,7 @@
       <!-- /.container -->
     </section>
     <hr style="margin-top: 20px; margin-bottom: 20px;" />
-    <section class="wrapper bg-light angled upper-end lower-end" style="margin-top: 20px;">
+    <section class="wrapper bg-light angled upper-end " data-aos="flip-right" style="margin-top: 20px;">
       <div class="container pt-8 pb-5 pt-md-6 pb-md-6">
         <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center">
           <div class="col-md-8 col-lg-6 offset-lg-0 col-xl-5 offset-xl-1 position-relative">
@@ -649,7 +653,7 @@
                     icon="uil:location-pin-alt"></iconify-icon> </div>
               </div>
               <div>
-                <h5 class="mb-1">Address1</h5>
+                <h5 class="mb-1">Campus 1</h5>
                 <address>{{ cs.0.Address1 }}</address>
               </div>
             </div>
@@ -659,7 +663,7 @@
                     icon="uil:location-pin-alt"></iconify-icon> </div>
               </div>
               <div>
-                <h5 class="mb-1">Address2</h5>
+                <h5 class="mb-1">Campus 2</h5>
                 <address>{{ cs.0.Address2 }}</address>
               </div>
             </div>
@@ -692,8 +696,51 @@
       </div>
       <!-- /.container -->
     </section>
+    
+    <!-- testimonal  -->
+    <section class="mt-4 p-5" data-aos="zoom-in-up">
+        <div class="container">
+          <h1 class="text-center text-2xl p-4" >Testimonial</h1>
+          <div id="carouselExampleControls" class="carousel slide text-center carousel-dark" data-mdb-ride="carousel">
+            <div class="carousel-inner">
+              <div class="carousel-item active">
+                <img class="rounded-circle shadow-1-strong mb-4"
+                  src="{{ ht.0.image.url }}" alt="avatar"
+                  style="width: 150px;" />
+                <div class="row d-flex justify-content-center">
+                  <div class="col-lg-8">
+                    <h5 class="mb-3">{{ ht.0.Name }}</h5>
+                    <p>{{ ht.0.Designation }}</p>
+                    <p class="text-muted">
+                      <i class="fas fa-quote-left pe-2"></i>
+                      {{ ht.0.Testimonial_content }}
+                    </p>
+                  </div>
+                </div>
+                <ul class="list-unstyled d-flex justify-content-center text-warning mb-0">
+                  <li><i class="fas fa-star fa-sm"></i></li>
+                  <li><i class="fas fa-star fa-sm"></i></li>
+                  <li><i class="fas fa-star fa-sm"></i></li>
+                  <li><i class="fas fa-star fa-sm"></i></li>
+                  <li><i class="far fa-star fa-sm"></i></li>
+                </ul>
+              </div>
+            </div>
+          <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleControls"
+            data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleControls"
+            data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div></div>
+      </section>
+      <!-- end of testimonal  -->
 
-    <section class="wrapper bg-soft-primary">
+    <section class=" bg-soft-primary" data-aos="zoom-in-up">
       <div class="container py-14 py-md-16 text-center">
         <div class="row">
           <div class="col-md-9 col-lg-7 col-xl-7 mx-auto text-center">
@@ -724,7 +771,6 @@
 
           <!-- /.row -->
         </div>
-        <!-- /.container -->
     </section>
     <nav class="navbar navbar-expand-lg extended navbar-light navbar-bg-light">
       <!-- /.d-flex -->
@@ -772,7 +818,7 @@
           </ul>
         </div> -->
       <!-- /.widget -->
-      <div class="col-lg-4">
+      <div class="col-lg-4" data-aos="zoom-in-up">
         <div class="widget">
           <img class="mb-4" src="#" srcset="{% static 'assets/img/logo-light@2x.png' %} 2x" alt="" />
           <p class="mb-4">Copyright © 2023 tbi Innovation Incubation Council, All Rights Reserved.</p>
@@ -916,12 +962,7 @@
     </div>
     <!-- /.container -->
   </section>
-  <!-- <div class="progress-wrap">
-    <svg class="progress-circle svg-content" width="100%" height="100%" viewBox="-1 -1 102 102">
-      <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
-    </svg>
-  </div>
-  <div class="progress-wrap bg-dark"> -->
+  
 
   </div>
   <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
@@ -931,7 +972,14 @@
   <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
   <script src="https://code.iconify.design/iconify-icon/1.0.3/iconify-icon.min.js"></script>
 
+  <!-- animation -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <!-- /animation -->
+  <!-- testimonal -->
+  
 </body>
-
 
 </html>
